@@ -10,8 +10,7 @@ async function main() {
     const Marketplace = await hre.ethers.getContractFactory("Marketplace");
     const marketplace = await Marketplace.deploy();
     await marketplace.deployed();
-
-    console.log("Marketplace address :" + marketplace.address);
+    console.log("Marketplace contract address :" + marketplace.address);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
