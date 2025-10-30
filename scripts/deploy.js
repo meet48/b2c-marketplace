@@ -5,7 +5,7 @@
 // will compile your contracts, add the Hardhat Runtime Environment's members to the
 // global scope, and execute the script.
 const hre = require("hardhat");
-
+// deploy
 async function main() {
     const Marketplace = await hre.ethers.getContractFactory("Marketplace");
     const marketplace = await Marketplace.deploy();
