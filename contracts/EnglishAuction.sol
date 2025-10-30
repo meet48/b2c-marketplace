@@ -151,13 +151,27 @@ contract EnglishAuction {
         locked = false;
     }
 
+
+    // Function to allow a user to withdraw their bid amount
+    // External visibility: can be called from outside the contract
+    // _noReentrant modifier: prevents reentrancy attacks to ensure secure fund transfers
     function withdraw() external _noReentrant() {
+        // Retrieve the bid amount associated with the calling address
         uint256 amount = _bids[msg.sender];
+        
+        // Ensure the user has a non-zero bid amount to withdraw
         require(amount > 0 , "amount zero");
+        
+        // Reset the user's bid amount to zero to prevent re-withdrawal
         _bids[msg.sender] = 0;
+        
+        // Transfer the bid amount to the calling address (converted to payable)
         payable(msg.sender).transfer(amount);
+        
+        // Emit an event to log the withdrawal, including the user's address and withdrawn amount
         emit Withdraw(msg.sender , amount);
     }
+
 
     function _endAuction(bytes32 hash) internal {
         _requireExists(hash);
