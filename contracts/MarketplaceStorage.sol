@@ -31,7 +31,7 @@ contract MarketplaceStorage {
         uint256 nonce;
         bytes signature;
     }
-
+    // sell
     struct Sell {
         address signer;
         address nftContract;
@@ -50,7 +50,7 @@ contract MarketplaceStorage {
         uint256 nonce;
         bool isValid;
     }
-
+    //event
     event Buy(address _contract , uint256 _tokenId , address _old , address _new);
     event SetVoucher(address signer , uint256 nonce , bool isValid);
     event RemoveVoucher(address signer , uint256 nonce);   
